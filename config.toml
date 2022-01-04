@@ -1,5 +1,5 @@
 [settings]
-token = "OTI3ODc0NTQ4MTg2MDkxNTMy.YdQkgw.KalZPwYuI-c1we7BR7c_jidFRY8" # Secret bot token
+token = "token" # Secret bot token
 prefix = "^" # Commands prefix
 activity = "TicketBot | Ready to work!" # Bot activity status
 online_status = "dnd" # Online status types: "online", "idle", "dnd (Do Not Disturb)", "invisible", "offline"
