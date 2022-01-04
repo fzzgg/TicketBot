@@ -42,6 +42,7 @@ public final class ButtonClickListener extends ListenerAdapter {
                     userCount++;
                     if (userCount >= 1) {
                         Messenger.sendPrivateMessage(member.getUser(), ticketBot.getConfiguration().getString("settings.ticket_is_already_opened"));
+                        event.deferEdit().complete();
                         return;
                     }
                 }
