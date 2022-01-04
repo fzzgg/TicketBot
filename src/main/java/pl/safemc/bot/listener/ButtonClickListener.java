@@ -13,7 +13,6 @@ import org.jetbrains.annotations.NotNull;
 import pl.safemc.bot.TicketBot;
 import pl.safemc.bot.util.Messenger;
 
-import java.awt.*;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 

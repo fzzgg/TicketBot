@@ -37,7 +37,7 @@ public final class Messenger {
 
         embedBuilder.setAuthor(user.getName(), user.getAvatarUrl(), user.getAvatarUrl())
                 .setTimestamp(Instant.now())
-                .setFooter("Data ", event.getAuthor().getAvatarUrl());
+                .setFooter("Date ", event.getAuthor().getAvatarUrl());
 
         var message = new MessageBuilder().setEmbeds(embedBuilder.build()).build();
         if (event.getChannelType() == ChannelType.PRIVATE) {

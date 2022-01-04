@@ -26,19 +26,15 @@ public final class TicketBot {
 
     private final Configuration configuration;
     private final CommandManager commandManager;
-    private final String prefix;
-    private final Color color;
     private final JDA jda;
+    private String prefix;
+    private Color color;
 
     TicketBot() throws Throwable {
         instance = this;
+
         configuration = new Configuration();
         commandManager = new CommandManager(this);
-
-        configuration.load(new File("config.toml"));
-
-        prefix = getConfiguration().getString("settings.prefix");
-        color = new Color(Integer.parseInt(getConfiguration().getString("ticket_create_embed.color").replaceFirst("#", ""), 16));
 
         jda = JDABuilder.createDefault(getConfiguration().getString("settings.token"))
                 .setActivity(Activity.listening(getConfiguration().getString("settings.activity")))
@@ -48,6 +44,11 @@ public final class TicketBot {
     }
 
     public void init() {
+        configuration.load(new File("config.toml"));
+
+        prefix = getConfiguration().getString("settings.prefix");
+        color = new Color(Integer.parseInt(getConfiguration().getString("ticket_create_embed.color").replaceFirst("#", ""), 16));
+
         commandManager.initCommands();
         jda.addEventListener(new ButtonClickListener(this),
                 new MessageReceivedListener(this));

@@ -13,12 +13,14 @@ import java.util.Set;
  * Created by Kamil on 04.01.2022
  */
 
-@RequiredArgsConstructor
 public final class CommandManager {
 
     private final TicketBot ticketBot;
 
-    @Getter
+    public CommandManager(TicketBot ticketBot) {
+        this.ticketBot = ticketBot;
+    }
+
     private final Set<Command> commands = new HashSet<>();
 
     public Command findCommand(String name) {
@@ -51,7 +53,7 @@ public final class CommandManager {
                 aConstructor.setAccessible(true);
                 registerCommand((Command) aConstructor.newInstance());
             }
-        } catch (final Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
