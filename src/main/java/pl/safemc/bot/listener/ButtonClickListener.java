@@ -60,7 +60,7 @@ public final class ButtonClickListener extends ListenerAdapter {
             return;
         }
 
-        if (event.getChannel().getName().startsWith("ticket-") && event.getComponentId().equals("close_ticket") && !member.getUser().isBot()) {
+        if (event.getChannel().getName().startsWith("ticket-") && event.getComponentId().equals("close_ticket")) {
             event.getTextChannel().delete().complete();
         }
     }
