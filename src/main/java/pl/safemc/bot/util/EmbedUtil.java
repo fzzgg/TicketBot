@@ -8,7 +8,7 @@ import java.awt.*;
  * Created by Kamil on 04.01.2022
  */
 
-public class EmbedUtil {
+public final class EmbedUtil {
 
     public static EmbedBuilder create(String title, String footer, Color color) {
         return new EmbedBuilder()

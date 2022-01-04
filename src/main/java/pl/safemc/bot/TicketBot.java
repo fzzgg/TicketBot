@@ -19,7 +19,7 @@ import java.io.File;
  */
 
 @Getter
-public class TicketBot {
+public final class TicketBot {
 
     @Getter
     private static TicketBot instance;

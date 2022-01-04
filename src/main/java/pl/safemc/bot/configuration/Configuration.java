@@ -8,7 +8,7 @@ import java.io.File;
  * Created by Kamil on 03.01.2022
  */
 
-public class Configuration {
+public final class Configuration {
 
     private Toml toml;
 

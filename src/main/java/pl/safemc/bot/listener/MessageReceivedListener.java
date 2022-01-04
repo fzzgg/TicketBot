@@ -19,7 +19,7 @@ import java.util.Objects;
  */
 
 @RequiredArgsConstructor
-public class MessageReceivedListener extends ListenerAdapter {
+public final class MessageReceivedListener extends ListenerAdapter {
 
     private final TicketBot ticketBot;
 
