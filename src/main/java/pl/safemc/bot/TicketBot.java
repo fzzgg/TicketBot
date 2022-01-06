@@ -36,6 +36,8 @@ public final class TicketBot {
         configuration = new Configuration();
         commandManager = new CommandManager(this);
 
+        configuration.load(new File("config.toml"));
+
         jda = JDABuilder.createDefault(getConfiguration().getString("settings.token"))
                 .setActivity(Activity.listening(getConfiguration().getString("settings.activity")))
                 .setStatus(OnlineStatus.fromKey(getConfiguration().getString("settings.online_status")))
@@ -44,8 +46,6 @@ public final class TicketBot {
     }
 
     public void init() {
-        configuration.load(new File("config.toml"));
-
         prefix = getConfiguration().getString("settings.prefix");
         color = new Color(Integer.parseInt(getConfiguration().getString("ticket_create_embed.color").replaceFirst("#", ""), 16));
 
