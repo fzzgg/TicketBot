@@ -4,6 +4,7 @@ import com.google.common.reflect.ClassPath;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import pl.safemc.bot.TicketBot;
+import pl.safemc.bot.command.TicketMessageCommand;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -16,12 +17,11 @@ import java.util.Set;
 public final class CommandManager {
 
     private final TicketBot ticketBot;
+    private final Set<Command> commands = new HashSet<>();
 
     public CommandManager(TicketBot ticketBot) {
         this.ticketBot = ticketBot;
     }
-
-    private final Set<Command> commands = new HashSet<>();
 
     public Command findCommand(String name) {
         return commands
@@ -45,14 +45,7 @@ public final class CommandManager {
 
     public void initCommands() {
         try {
-            for (ClassPath.ClassInfo classInfo : ClassPath.from(getClass().getClassLoader())
-                    .getTopLevelClasses("pl.safemc.bot.command")
-                    .asList()) {
-
-                var aConstructor = classInfo.load().getConstructor();
-                aConstructor.setAccessible(true);
-                registerCommand((Command) aConstructor.newInstance());
-            }
+            registerCommand(new TicketMessageCommand());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
